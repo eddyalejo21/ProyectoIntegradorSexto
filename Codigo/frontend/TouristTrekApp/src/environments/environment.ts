@@ -6,7 +6,12 @@ import packageInfo from '../../package.json';
 
 export const environment = {
   appVersion: packageInfo.version,
-  production: false
+  production: false,
+  baseURL:"http://localhost/PIEddy/ProyectoIntegradorSexto/Codigo/",
+  imgURL:"backend/public/img/",
+  apiURL:"backend/controllers/",
+
+
 };
 
 /*

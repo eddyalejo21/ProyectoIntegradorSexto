@@ -8,8 +8,8 @@ class ClaseBaseDatos
 
     protected $db;
     private $host = "localhost";
-    private $usuario = "root";
-    private $pass = "";
+    private $usuario = "mysqluser";
+    private $pass = "MySql1910";
     private $base = "bd_touristtrek";
     private $puerto = "3306";
     

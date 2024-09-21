@@ -1,0 +1,43 @@
+
+<div class="row">
+    <div class="col-sm-12">
+        <app-card cardTitle="Administración de Clientes" blockClass="pc-component">
+            <h5 class="mb-3">
+                <a href="nuevocliente" class="btn btn-info"><i class="fas fa-plus"></i> Nuevo</a>
+            </h5>
+
+            <div class="card tbl-card">
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Identificación</th>
+                                <th class="text-center">Nombre</th>
+                                <th class="text-center">fecha Nacimiento</th>
+                                <th class="text-center" style="width: 150px;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            @for (cliente of listaClientes; track $index) {
+                            <tr>
+                                <td class="text-center">{{ cliente.identificacion }}</td>
+                                <td class="text-center">{{ cliente.nombre }}</td>
+                                <td class="text-center">{{ cliente.fecha_nacimiento }}</td>
+
+                                <td class="text-center">
+                                    <button type="button" class="btn text-primary"
+                                        [routerLink]="['/editar-cliente/', cliente.id_cliente]">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button (click)="eliminar(cliente.id_cliente)" type="button"
+                                        class="btn text-danger"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </app-card>
+    </div>
+</div>

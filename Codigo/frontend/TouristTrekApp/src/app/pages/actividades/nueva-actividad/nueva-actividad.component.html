@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card cardTitle="{{tituloPantalla}}" blockClass="pc-component">
+            <form [formGroup]="form_Actividad" (ngSubmit)="guardar()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="nombre">Nombre de Actividad</label>
+                            <input formControlName="nombre" type="text" class="form-control" id="nombre" />
+                            <div *ngIf="form_Actividad.get('nombre').invalid && form_Actividad.get('nombre').touched">
+                                <small *ngIf="form_Actividad.get('nombre').hasError('required')"
+                                    style="color: red">Nombre de medio es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="descripcion">Descripción de Actividad</label>
+                            <textarea formControlName="descripcion" type="text" class="form-control" id="descripcion" ></textarea>
+                            <div
+                                *ngIf="form_Actividad.get('descripcion').invalid && form_Actividad.get('descripcion').touched">
+                                <small *ngIf="form_Actividad.get('descripcion').hasError('required')"
+                                    style="color: red">Descripción de actividad es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Actividad</label>
+                            <select class="form-control" (change)="cambio($event)" formControlName="id_tipoactividad">
+                                <option>Seleccione una opcion</option>
+                                @for (tipoactividad of listaTipoActividad; track $index) {
+                                <option value="{{ tipoactividad.id_tipoactividad }}">{{ tipoactividad.nombre }}</option>
+                                }
+                            </select>
+                            <div
+                                *ngIf="form_Actividad.get('id_tipoactividad').invalid && form_Actividad.get('id_tipoactividad').touched">
+                                <small *ngIf="form_Actividad.get('id_tipoactividad').hasError('required')"
+                                    style="color: red">tipo de actividad es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4 offset-md-4">
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-primary"
+                                [disabled]="form_Actividad.invalid">{{nombreBoton}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </app-card>
+    </div>
+</div>

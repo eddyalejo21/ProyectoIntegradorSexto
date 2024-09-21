@@ -1,0 +1,30 @@
+
+<div class="row">
+    <div class="col-sm-12">
+        <app-card cardTitle="{{tituloPantalla}}" blockClass="pc-component">
+            <form [formGroup]="form_MedioContacto" (ngSubmit)="guardar()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="nombre">Nombre del medio de contacto</label>
+                            <input formControlName="nombre" type="text" class="form-control" id="nombre" />
+                            <div
+                                *ngIf="form_MedioContacto.get('nombre').invalid && form_MedioContacto.get('nombre').touched">
+                                <small *ngIf="form_MedioContacto.get('nombre').hasError('required')"
+                                    style="color: red">Nombre de medio es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4 offset-md-4">
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-primary"
+                                [disabled]="form_MedioContacto.invalid">{{nombreBoton}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </app-card>
+    </div>
+</div>

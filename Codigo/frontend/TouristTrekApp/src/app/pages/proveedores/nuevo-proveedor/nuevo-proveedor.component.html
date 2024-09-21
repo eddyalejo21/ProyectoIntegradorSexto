@@ -1,0 +1,100 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card cardTitle="{{tituloPantalla}}" blockClass="pc-component">
+            <form [formGroup]="form_Proveedor" (ngSubmit)="guardar()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="empresa">Nombre de Empresa</label>
+                            <input formControlName="nombre_empresa" type="text" class="form-control" id="empresa" />
+                            <div
+                                *ngIf="form_Proveedor.get('nombre_empresa').invalid && form_Proveedor.get('nombre_empresa').touched">
+                                <small *ngIf="form_Proveedor.get('nombre_empresa').hasError('required')"
+                                    style="color: red">Nombre de empresa es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="representante">Nombre de Representante</label>
+                            <input formControlName="nombre_representante" type="text" class="form-control"
+                                id="representante" />
+                            <div
+                                *ngIf="form_Proveedor.get('nombre_representante').invalid && form_Proveedor.get('nombre_representante').touched">
+                                <small *ngIf="form_Proveedor.get('nombre_representante').hasError('required')"
+                                    style="color: red">Nombre de representate es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="direccion">Dirección</label>
+                            <input formControlName="direccion" type="text" class="form-control" id="direccion" />
+                            <div
+                                *ngIf="form_Proveedor.get('direccion').invalid && form_Proveedor.get('direccion').touched">
+                                <small *ngIf="form_Proveedor.get('direccion').hasError('required')"
+                                    style="color: red">Dirección es requerida</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label" for="telfono1">Teléfono Principal</label>
+                            <input formControlName="telefono_principal" type="text" class="form-control"
+                                id="telfono1" />
+                            <div
+                                *ngIf="form_Proveedor.get('telefono_principal').invalid && form_Proveedor.get('telefono_principal').touched">
+                                <small *ngIf="form_Proveedor.get('telefono_principal').hasError('required')"
+                                    style="color: red">Teléfono Principal es requerido</small>
+                                <small *ngIf="form_Proveedor.get('telefono_principal').hasError('pattern')"
+                                    style="color: red">Únicamente ingresar números</small>
+                                <small *ngIf="form_Proveedor.get('telefono_principal').hasError('maxlength')"
+                                    style="color: red">Máximo 10 números</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label" for="telfono2">Teléfono Secundario</label>
+                            <input formControlName="telefono_secundario" type="text" class="form-control"
+                                id="telfono2" />
+                            <div
+                                *ngIf="form_Proveedor.get('telefono_secundario').invalid && form_Proveedor.get('telefono_secundario').touched">
+                                <small *ngIf="form_Proveedor.get('telefono_secundario').hasError('pattern')"
+                                    style="color: red">Únicamente ingresar números</small>
+                                <small *ngIf="form_Proveedor.get('telefono_secundario').hasError('maxlength')"
+                                    style="color: red">Máximo 10 números</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="correo">Email</label>
+                            <input formControlName="correo" type="email" class="form-control" id="correo" />
+                            <div *ngIf="form_Proveedor.get('correo').invalid && form_Proveedor.get('correo').touched">
+                                <small *ngIf="form_Proveedor.get('correo').hasError('required')"
+                                    style="color: red">Correo es requerido</small>
+                                <small *ngIf="form_Proveedor.get('correo').hasError('email')" style="color: red">Debe
+                                    ingresar un correo valido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4 offset-md-4">
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-primary"
+                                [disabled]="form_Proveedor.invalid">{{nombreBoton}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </app-card>
+    </div>
+</div>

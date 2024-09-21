@@ -1,0 +1,44 @@
+
+<div class="row">
+    <div class="col-sm-12">
+      <app-card cardTitle="Lista de Lugares" blockClass="pc-component">
+        <div class="col-md-12 col-xl-12">
+          <h5 class="mb-3">
+            <a href="nuevolugar" class="btn btn-outline-dark">Nuevo</a>
+          </h5>
+          <div class="card tbl-card">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Nombre Lugar</th>
+                    <th class="text-center">Latitud</th>
+                    <th class="text-center">Longitud</th>
+                    <th class="text-end">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (lugar of listaLugares; track $index) {
+                    <tr>
+                      <td class="text-center">{{ $index + 1 }}</td>
+                      <td class="text-center">{{ lugar.nombre }}</td>
+                      <td class="text-center">{{ lugar.latitud}}</td>
+                      <td class="text-center">{{ lugar.longitud}}</td>
+  
+                      <td class="text-end">
+                        <button type="button" class="btn btn-outline-success m-1" [routerLink]="['/editar-lugar/', lugar.id_lugar]">
+                          Editar
+                        </button>
+                        <button (click)="eliminar(lugar.id_lugar)" type="button" class="btn btn-outline-danger">Eliminar</button>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  </div>

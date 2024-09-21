@@ -1,0 +1,159 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card cardTitle="{{tituloPantalla}}" blockClass="pc-component">
+            <form [formGroup]="form_Cliente" novalidate (ngSubmit)="guardar()">
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label" for="identificacion">Identificación</label>
+                            <input formControlName="identificacion" type="text" class="form-control" id="identificacion"
+                                placeholder="Cédula, Ruc o Pasaporte" />
+                            <div
+                                *ngIf="form_Cliente.get('identificacion').invalid && form_Cliente.get('identificacion').touched">
+                                <small *ngIf="form_Cliente.get('identificacion').hasError('required')"
+                                    style="color: red">Número de identificación es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="nombre">Nombres</label>
+                            <input formControlName="nombre" type="text" class="form-control" id="nombre" />
+                            <div *ngIf="form_Cliente.get('nombre').invalid && form_Cliente.get('nombre').touched">
+                                <small *ngIf="form_Cliente.get('nombre').hasError('required')" style="color: red">Nombre
+                                    de medio es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="correo">Email</label>
+                            <input formControlName="correo" type="text" class="form-control" id="correo" />
+                            <div *ngIf="form_Cliente.get('correo').invalid && form_Cliente.get('correo').touched">
+                                <small *ngIf="form_Cliente.get('correo').hasError('required')" style="color: red">Correo
+                                    es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="fecha_nacimiento">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="fecha_nacimiento"
+                                formControlName="fecha_nacimiento" />
+                            <div *ngIf="form_Cliente.get('fecha_nacimiento').invalid && form_Cliente.get('fecha_nacimiento').touched">
+                                <small *ngIf="form_Cliente.get('fecha_nacimiento').hasError('required')" style="color: red">Fecha
+                                    es requerido</small>
+                            </div>
+                            <!-- @if (form_Cliente.get('fecha_nacimiento').invalid &&
+                            form_Cliente.get('fecha_nacimiento').touched) {
+                            <div>
+                                @if (form_Cliente.get('fecha_nacimiento').hasError('required')) {
+                                <small style="color: red">Los nombres son requeridos</small>
+                                }
+                            </div> 
+                            }-->
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="genero" class="form-label">Género</label>
+                            <select class="form-control" id="genero" formControlName="genero">
+                                <option>Seleccione una opción</option>
+                                <option value="F">Femenino</option>
+                                <option value="M">Masculino</option>
+                            </select>
+                            <div *ngIf="form_Cliente.get('genero').invalid && form_Cliente.get('genero').touched">
+                                <small *ngIf="form_Cliente.get('genero').hasError('required')" style="color: red">Género
+                                    es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="pais" class="form-label">País</label>
+                            <select class="form-control" (change)="valorPais($event)" formControlName="id_pais">
+                                <option>Seleccione una opcion</option>
+                                @for (pais of listaPaises; track $index) {
+                                <option value="{{ pais.id_pais }}">{{ pais.nombre }}</option>
+                                }
+                            </select>
+                            <div *ngIf="form_Cliente.get('id_pais').invalid && form_Cliente.get('id_pais').touched">
+                                <small *ngIf="form_Cliente.get('id_pais').hasError('required')" style="color: red">Pais
+                                    es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label" for="telefono">Teléfono</label>
+                            <input formControlName="telefono" type="text" class="form-control" id="telefono" />
+                            <div *ngIf="form_Cliente.get('telefono').invalid && form_Cliente.get('telefono').touched">
+                                <small *ngIf="form_Cliente.get('telefono').hasError('required')"
+                                    style="color: red">Télefono
+                                    es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="pais" class="form-label">Tipo de Cliente</label>
+                            <select class="form-control" (change)="valorTipoCliente($event)"
+                                formControlName="id_tipocliente">
+                                <option>Seleccione una opcion</option>
+                                @for (tipoCliente of listaTiposCliente; track $index) {
+                                <option value="{{ tipoCliente.id_tipocliente }}">{{ tipoCliente.nombre }}</option>
+                                }
+                            </select>
+                            <div
+                                *ngIf="form_Cliente.get('id_tipocliente').invalid && form_Cliente.get('id_tipocliente').touched">
+                                <small *ngIf="form_Cliente.get('id_tipocliente').hasError('required')"
+                                    style="color: red">Tipo de cliente
+                                    es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <label for="pais" class="form-label mb-2 fw-bold">Medios de contacto de su preferencia</label>
+                    <div class="col-md-12">
+                        @for (medioContacto of listaMediosContacto; track $index) {
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input border-primary" style="font-size: 15px;" type="checkbox" value="{{ medioContacto.id_mediocontacto}}">
+                            <label class="form-check-label" for="opcion1">
+                                {{ medioContacto.nombre }}
+                            </label>
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-4 offset-md-4">
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-primary"
+                                [disabled]="form_Cliente.invalid">{{nombreBoton}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </app-card>
+    </div>
+</div>

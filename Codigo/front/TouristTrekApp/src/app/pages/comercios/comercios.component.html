@@ -1,0 +1,57 @@
+
+<div class="row">
+    <div class="col-sm-12">
+      <app-card cardTitle="Lista de Comercios" blockClass="pc-component">
+        <div class="col-md-12 col-xl-12">
+          <h5 class="mb-3">
+            <a href="nuevocomercio" class="btn btn-outline-dark">Nuevo</a>
+          </h5>
+          <div class="card tbl-card">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Nombre Comercio</th>
+                    <th class="text-center">Dirección</th>
+                    <th class="text-center">Latitud</th>
+                    <th class="text-center">Longitud</th>
+                    <th class="text-end">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (comercio of listaComercios; track $index) {
+                    <tr>
+                      <td class="text-center">{{ $index + 1 }}</td>
+                      <td class="text-center">{{ comercio.nombre }}</td>
+                      <td class="text-center">{{ comercio.direccion }}</td>
+                      <td class="text-center">{{ comercio.latitud}}</td>
+                      <td class="text-center">{{ comercio.longitud}}</td>
+  
+                      <td class="text-end">
+                        <button type="button" class="btn btn-outline-success m-1" [routerLink]="['/editar-comercio/', comercio.id_comercio]">
+                          Editar
+                        </button>
+                        <button (click)="eliminar(comercio.id_comercio)" type="button" class="btn btn-outline-danger">Eliminar</button>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+
+              <div class="form-group mb-3">
+                <label class="form-label">Cliente</label>
+                <select class="form-control">
+                  <option>Seleccione una opcion</option>
+                  @for (comercio of listaComercios; track $index) {
+                    <option value="{{ comercio.id_comercio }}">{{ comercio.nombre }}</option>
+                  }
+                </select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  </div>

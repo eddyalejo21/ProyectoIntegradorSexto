@@ -1,0 +1,96 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card cardTitle="{{tituloPantalla}}" blockClass="pc-component">
+            <form [formGroup]="form_ActividadProveedor" (ngSubmit)="guardar()">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="nombre">Nombre de Actividad</label>
+                            <select class="form-control" (change)="seleccionarIdActividad($event)"
+                                formControlName="id_actividad">
+                                <option>Seleccione una opcion</option>
+                                @for (actividad of listaActividades; track $index) {
+                                <option value="{{ actividad.id_actividad }}">{{ actividad.nombre }}</option>
+                                }
+                            </select>
+                            <div
+                                *ngIf="form_ActividadProveedor.get('id_actividad').invalid && form_ActividadProveedor.get('id_actividad').touched">
+                                <small *ngIf="form_ActividadProveedor.get('id_actividad').hasError('required')"
+                                    style="color: red">Actividad es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" for="nombre">Nombre de Proveedor</label>
+                            <select class="form-control" (change)="seleccionarIdProveedor($event)"
+                                formControlName="id_proveedor">
+                                <option>Seleccione una opcion</option>
+                                @for (proveedor of listaProveedores; track $index) {
+                                <option value="{{ proveedor.id_proveedor }}">{{ proveedor.nombre_empresa }}</option>
+                                }
+                            </select>
+                            <div
+                                *ngIf="form_ActividadProveedor.get('id_proveedor').invalid && form_ActividadProveedor.get('id_proveedor').touched">
+                                <small *ngIf="form_ActividadProveedor.get('id_proveedor').hasError('required')"
+                                    style="color: red">Proveedor es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label" for="adultos">Tarifa de Adultos</label>
+                            <input formControlName="tarifa_adultos" type="text" class="form-control" id="adultos" />
+                            <div
+                                *ngIf="form_ActividadProveedor.get('tarifa_adultos').invalid && form_ActividadProveedor.get('tarifa_adultos').touched">
+                                <small *ngIf="form_ActividadProveedor.get('tarifa_adultos').hasError('required')"
+                                    style="color: red">Tarifa de adultos es requerido</small>
+                                <small *ngIf="form_ActividadProveedor.get('tarifa_adultos').hasError('pattern')"
+                                    style="color: red">Únicamente números decimales con dos decimales</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label" for="ninos">Tarifa de Niños</label>
+                            <input formControlName="tarifa_ninos" type="text" class="form-control" id="ninos" />
+                            <div
+                                *ngIf="form_ActividadProveedor.get('tarifa_ninos').invalid && form_ActividadProveedor.get('tarifa_ninos').touched">
+                                <small *ngIf="form_ActividadProveedor.get('tarifa_ninos').hasError('required')"
+                                    style="color: red">Tarifa de niños es requerido</small>
+                                <small *ngIf="form_ActividadProveedor.get('tarifa_ninos').hasError('pattern')"
+                                    style="color: red">Únicamente números decimales con dos decimales</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label" for="extranjeros">Tarifa de Extranjeros</label>
+                            <input formControlName="tarifa_extranjero" type="text" class="form-control"
+                                id="extranjeros" />
+                            <div
+                                *ngIf="form_ActividadProveedor.get('tarifa_extranjero').invalid && form_ActividadProveedor.get('tarifa_extranjero').touched">
+                                <small *ngIf="form_ActividadProveedor.get('tarifa_extranjero').hasError('required')"
+                                    style="color: red">Tarifa de extranjeros es requerido</small>
+                                <small *ngIf="form_ActividadProveedor.get('tarifa_extranjero').hasError('pattern')"
+                                    style="color: red">Únicamente números decimales con dos decimales</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4 offset-md-4">
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-primary"
+                                [disabled]="form_ActividadProveedor.invalid">{{nombreBoton}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </app-card>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card cardTitle="{{tituloPantalla}}" blockClass="pc-component">
+            <form [formGroup]="form_TipoCliente" (ngSubmit)="guardar()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="nombre">Nombre del tipo de cliente</label>
+                            <input formControlName="nombre" type="text" class="form-control" id="nombre" />
+                            <div
+                                *ngIf="form_TipoCliente.get('nombre').invalid && form_TipoCliente.get('nombre').touched">
+                                <small *ngIf="form_TipoCliente.get('nombre').hasError('required')"
+                                    style="color: red">Nombre de tipo es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4 offset-md-4">
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-primary"
+                                [disabled]="form_TipoCliente.invalid">{{nombreBoton}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </app-card>
+    </div>
+</div>

@@ -115,6 +115,10 @@ const routes: Routes = [
       {
         path: 'editar-cliente/:id',
         loadComponent: () => import('./pages/clientes/nuevo-cliente/nuevo-cliente.component').then((m) => m.NuevoClienteComponent),
+      },
+      {
+        path: 'principal',
+        loadComponent: () => import('./demo/default/principal/principal.component').then((c) => c.PrincipalComponent)
       }
     ]
   },

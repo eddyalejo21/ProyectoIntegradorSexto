@@ -1,182 +1,118 @@
-<div class="bg_fondo page-header section-dark" >
-  <div class="filter"></div>
-  <div class="content-center">
-    <div class="container">
-    <div class="title-brand">
-    <h1 class="presentation-title">WILD BAÑOS ADVENTURES</h1>
-    <div class="fog-low">
-    <img src="./assets/img/fog-low.png" alt>
+<div class="row">
+  @for (analytic of AnalyticEcommerce; track analytic) {
+    <div class="col-md-6 col-xl-3">
+      <app-card [showHeader]="false" blockClass="dashboard-card">
+        <h6 class="mb-2 f-w-400 text-muted">{{ analytic.title }}</h6>
+        <h4 class="mb-3">
+          {{ analytic.amount }}
+          <span class="badge {{ analytic.background }} border {{ analytic.border }} ">
+            <i antIcon type="{{ analytic.icon }}" theme="outline"></i>
+            {{ analytic.percentage }}
+          </span>
+        </h4>
+        <p class="mb-0 text-muted text-sm">
+          You made an extra
+          <span class="{{ analytic.color }}">{{ analytic.number }}</span>
+          this year
+        </p>
+      </app-card>
     </div>
-    <div class="fog-low right">
-    <img src="./assets/img/fog-low.png" alt>
-    </div>
-    </div>
-    <h2 class="presentation-subtitle text-center">Haz que cada momento sea una aventura inolvidable</h2>
+  }
+  <div class="col-md-12 col-xl-8">
+    <app-monthly-bar-chart />
+  </div>
+  <div class="col-md-12 col-xl-4">
+    <app-income-overview-chart />
+  </div>
+
+  <div class="col-md-12 col-xl-8">
+    <h5 class="mb-3">Recent Orders</h5>
+    <div class="card tbl-card">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>TRACKING NO.</th>
+              <th>PRODUCT NAME</th>
+              <th>STATUS</th>
+              <th class="text-end">TOTAL ORDER</th>
+              <th class="text-end">TOTAL AMOUNT</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (order of recentOrder; track order) {
+              <tr>
+                <td>
+                  <a href="javascript:" class="text-muted">{{ order.id }}</a>
+                </td>
+                <td>{{ order.name }}</td>
+                <td>
+                  <span class="d-block">
+                    <i class="badge-circle {{ order.status_type }} f-10 m-r-5"></i>
+                    {{ order.status }}
+                  </span>
+                </td>
+                <td class="text-end">{{ order.quantity }}</td>
+                <td class="text-end">{{ order.amount }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div> 
+  <div class="col-md-12 col-xl-4">
+    <app-analytics-chart />
+  </div>
 
-
-<section class="food_section layout_padding-bottom">
-  <div class="container">
-    <div class="heading_container heading_center">
-      <h2>
-        Lugares TOP
-      </h2>
-    </div>
-
-    <ul class="filters_menu">
-      <li class="active" data-filter="*">Todos</li>
-      <li data-filter=".burger">Aventura</li>
-      <li data-filter=".pizza">Relax</li>
-      <li data-filter=".pasta">Trail</li>
-      <li data-filter=".fries">Canopy</li>
-    </ul>
-
-    <div class="filters-content">
-      <div class="row grid">
-        <div class="col-sm-6 col-lg-4 all pizza">
-          <div class="box">
-            <div>
-              <div class="img-box">
-                <img src="https://localhost/PiEddy/ProyectoIntegradorSexto/Codigo/backend/public/img/pailon.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Cascada Pailón del Diablo
-                </h5>
-                <p>
-                  Este viene siendo su nombre común, pero en realidad su nombre es Cascada de río Verde. Su nombre de el pailón del diablo nace por la forma que tiene las rocas que se encuentran bajo la cascada y si observas con detenimiento podrás ver la forma del rostro del diablo que se encuentra formado en las rocas, de ahí su nombre.
-                </p>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 all burger">
-          <div class="box">
-            <div>
-              <div class="img-box">
-                <img src="https://localhost/PiEddy/ProyectoIntegradorSexto/Codigo/backend/public/img/rafting.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Parque Aventura San Martín
-                </h5>
-                <p>
-                  Si eres amante de las emociones fuertes, este parque será uno de tus lugares favoritos en Tungurahua. Zipline, canopy, caminata en puente tibetano, escalada en roca y paseos en tarabita son algunas de las actividades que pondrán a vibrar a tu corazón 
-                </p>
-                <div class="options">
-                  <h6>
-                    $15
-                  </h6>
-                  
+  <div class="col-md-12 col-xl-8">
+    <app-sales-report-chart />
+  </div>
+  <div class="col-md-12 col-xl-4">
+    <h5 class="mb-3">Transaction History</h5>
+    <div class="card">
+      <div class="list-group list-group-flush">
+        @for (history of transaction; track history) {
+          <a href="javascript:" class="list-group-item list-group-item-action px-3">
+            <div class="d-flex">
+              <div class="flex-shrink-0">
+                <div class="avatar avatar-s rounded-circle {{ history.background }}">
+                  <i class="f-16" antIcon type="{{ history.icon }}" theme="outline"></i>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 all pizza">
-          <div class="box">
-            <div>
-              <div class="img-box">
-                <img src="https://localhost/PiEddy/ProyectoIntegradorSexto/Codigo/backend/public/img/piscinas.jpg" alt="">
+              <div class="flex-grow-1 ms-3">
+                <h6 class="mb-1">{{ history.title }}</h6>
+                <p class="mb-0 text-muted">{{ history.time }}</p>
               </div>
-              <div class="detail-box">
-                <h5>
-                  Termas de la Virgen
-                </h5>
-                <p>
-                  Las Termas de la Virgen disfruta de las bondades de las aguas termales en el beneficio de la salud. Baños Ecuador en la provincia del Tungurahua esperan por tí. 
-                </p>
-                
+              <div class="flex-shrink-0 text-end">
+                <h6 class="mb-1">{{ history.amount }}</h6>
+                <p class="mb-0 text-muted">{{ history.percentage }}</p>
               </div>
             </div>
-          </div>
-        </div>
+          </a>
+        }
       </div>
     </div>
-    <div class="btn-box">
-      <a href="">
-        Buscar más
-      </a>
+    <div class="card">
+      <div class="card-body">
+        <div class="row justify-content-between">
+          <div class="col-auto">
+            <h5>Help & Support Chat</h5>
+            <p class="mb-3">Typical replay within 5 min</p>
+          </div>
+          <div class="col-auto">
+            <div class="user-group mb-3">
+              <img src="assets/images/user/avatar-1.jpg" alt="image" />
+              <img src="assets/images/user/avatar-2.jpg" alt="image" />
+              <img src="assets/images/user/avatar-3.jpg" alt="image" />
+            </div>
+          </div>
+        </div>
+        <div class="d-grid">
+          <div class="btn btn-primary">Need Help?</div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
-
-  
-<footer class="footer_section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 footer-col">
-          <div class="footer_contact">
-            <h4>
-              Contáctenos
-            </h4>
-            <div class="contact_link_box">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Dirección
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Cel +593 0998677543
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  wildbaniosadventure&#64;gmail.com
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 footer-col">
-          <div class="footer_detail">
-            <a href="" class="footer-logo">
-              Buscanos en las redes sociales
-            </a>
-            <p>
-              
-            </p>
-            <div class="footer_social">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-pinterest" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 footer-col">
-          <h4>
-            Horario de atencion
-          </h4>
-          <p>
-            De lunes a viernes
-          </p>
-          <p>
-            08h00 - 20h00
-          </p>
-        </div>
-      </div>
-      
-    </div>
-  </footer>
-
-
- 
+  <!-- [ sample-page ] end -->
+</div>

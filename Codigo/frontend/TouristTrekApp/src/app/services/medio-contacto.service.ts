@@ -2,14 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IMedioContacto } from '../interfaces/medio-contacto';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedioContactoService {
 
-  apiurl = 'http://localhost/proyectointegradorsexto/Codigo/backend/controllers/mediocontacto.controller.php?op=';
-
+  //apiurl = 'http://localhost/proyectointegradorsexto/Codigo/backend/controllers/mediocontacto.controller.php?op=';
+  apiurl = environment.baseURL + environment.apiURL + 'mediocontacto.controller.php?op=';
   private http = inject(HttpClient);
   
   constructor() { }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { ILugar } from '../interfaces/lugares';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ import { Observable } from 'rxjs';
 export class LugaresService {
 
   
-  apiurl = 'http://localhost/proyectointegradorsexto/Codigo/back/controllers/lugares.controller.php?op=';
-
+  //apiurl = 'http://localhost/proyectointegradorsexto/Codigo/back/controllers/lugares.controller.php?op=';
+  apiurl = environment.baseURL + environment.apiURL + 'lugares.controller.php?op=';
   private http = inject(HttpClient);
 
   constructor( ) { }

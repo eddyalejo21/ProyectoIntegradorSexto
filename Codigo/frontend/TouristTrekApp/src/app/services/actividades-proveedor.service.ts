@@ -2,14 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IActividadProveedor } from '../interfaces/actividades-proveedor';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActividadesProveedorService {
 
-  apiurl = 'http://localhost/proyectointegradorsexto/Codigo/backend/controllers/actividadesproveedor.controller.php?op=';
-
+  //apiurl = 'http://localhost/proyectointegradorsexto/Codigo/backend/controllers/actividadesproveedor.controller.php?op=';
+  apiurl = environment.baseURL + environment.apiURL + 'actividadesproveedor.controller.php?op=';
   private http = inject(HttpClient);
   
   constructor() { }

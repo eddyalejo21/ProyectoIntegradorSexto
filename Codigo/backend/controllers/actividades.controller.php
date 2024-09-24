@@ -74,4 +74,17 @@ switch ($_GET["op"]) {
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;
+    case 'imagenes': 
+        $id_actividad = $_POST["id_actividad"];
+        $datos = array();
+        $datos = $actividades->imagenesActividad($id_actividad);
+        $res = mysqli_fetch_assoc($datos);
+        echo json_encode($res);
+        break;
+    case 'todoimagenes': 
+        $datos = array();
+        $datos = $actividades->imagenesTodaActividad();
+        $res = mysqli_fetch_assoc($datos);
+        echo json_encode($res);
+        break;
 }

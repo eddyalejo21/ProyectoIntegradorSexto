@@ -5,10 +5,10 @@
       <div class="title-brand">
       <h1 class="presentation-title">WILD BAÑOS ADVENTURES</h1>
       <div class="fog-low">
-      <img src="./assets/img/fog-low.png" alt>
+      
       </div>
       <div class="fog-low right">
-      <img src="./assets/img/fog-low.png" alt>
+      
       </div>
       </div>
       <h2 class="presentation-subtitle text-center">Haz que cada momento sea una aventura inolvidable</h2>
@@ -24,80 +24,33 @@
           Lugares TOP
         </h2>
       </div>
-  
-      <ul class="filters_menu">
-        <li class="active" data-filter="*">Todos</li>
-        <li data-filter=".burger">Aventura</li>
-        <li data-filter=".pizza">Relax</li>
-        <li data-filter=".pasta">Trail</li>
-        <li data-filter=".fries">Canopy</li>
-      </ul>
-  
-      <div class="filters-content">
+      <div class="content">
         <div class="row grid">
-          <div class="col-sm-6 col-lg-4 all pizza">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="https://localhost/PiEddy/ProyectoIntegradorSexto/Codigo/backend/public/img/pailon.jpg" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Cascada Pailón del Diablo
-                  </h5>
-                  <p>
-                    Este viene siendo su nombre común, pero en realidad su nombre es Cascada de río Verde. Su nombre de el pailón del diablo nace por la forma que tiene las rocas que se encuentran bajo la cascada y si observas con detenimiento podrás ver la forma del rostro del diablo que se encuentra formado en las rocas, de ahí su nombre.
-                  </p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all burger">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="https://localhost/PiEddy/ProyectoIntegradorSexto/Codigo/backend/public/img/rafting.jpg" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Parque Aventura San Martín
-                  </h5>
-                  <p>
-                    Si eres amante de las emociones fuertes, este parque será uno de tus lugares favoritos en Tungurahua. Zipline, canopy, caminata en puente tibetano, escalada en roca y paseos en tarabita son algunas de las actividades que pondrán a vibrar a tu corazón 
-                  </p>
-                  <div class="options">
-                    <h6>
-                      $15
-                    </h6>
+
+          @for (actividad of listaActividades; track $index) {
+            <div class="col-sm-6 col-lg-4">
+              <div class="box">
+                <div>
+                  <div class="img-box">
+                    <img src={{pathImagenes}} alt="">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                      {{actividad.nombre}}
+                    </h5>
+                    <p>
+                      {{actividad.descripcion}}
+                    </p>
                     
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all pizza">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="https://localhost/PiEddy/ProyectoIntegradorSexto/Codigo/backend/public/img/piscinas.jpg" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Termas de la Virgen
-                  </h5>
-                  <p>
-                    Las Termas de la Virgen disfruta de las bondades de las aguas termales en el beneficio de la salud. Baños Ecuador en la provincia del Tungurahua esperan por tí. 
-                  </p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
+            }
         </div>
       </div>
       <div class="btn-box">
-        <a href="">
+        <a href="actividades">
           Buscar más
         </a>
       </div>

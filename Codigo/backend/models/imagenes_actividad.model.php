@@ -44,6 +44,14 @@ class Imagenes_Actividad
        return $this->tabla->EliminarRegistro($id_imagenes_actividad);   
     }
 
+    //Devuelve las imagenes de una actividad en particular
+    public function actividad($id_actividad) 
+    {
+        $campo = "id_actividad";
+        $datos = $this->tabla->DevolverPorCampo($id_actividad, $campo);
+        return $datos;
+    }
+
     /*public function todosJoin()
     {
         $con = new ClaseBaseDatos();

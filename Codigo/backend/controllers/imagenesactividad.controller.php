@@ -60,4 +60,12 @@ switch ($_GET["op"]) {
         $datos = $imagenes_actividad->eliminar($id_imagenesactividad);
         echo json_encode($datos);
         break;
+        
+    case 'actividad':
+        $id_imagenesactividad = $_POST["id_actividad"];
+        $datos = array();
+        $datos = $imagenes_actividad->actividad($id_actividad);
+        $res = mysqli_fetch_assoc($datos);
+        echo json_encode($res);
+        break;
 }

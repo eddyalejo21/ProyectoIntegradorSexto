@@ -152,4 +152,38 @@ class ClaseTabla
             $con->close();
         }
     }
+
+    public function DevolverPorCampo($id_registro, $campo) 
+    {
+        $con = new ClaseBaseDatos();
+        $con = $con->Conectar();
+        $cadena = "SELECT * FROM `$this->nombre` WHERE `$campo`= $id_registro";
+        $datos = mysqli_query($con, $cadena);
+        $con->close();
+        return $datos;
+    }
+
+    public function DevolverJoinTablas($id_registro,$tablaJoin) 
+    {
+        $con = new ClaseBaseDatos();
+        $con = $con->Conectar();
+        $cadena = "SELECT * FROM `$this->nombre`
+        inner join $tablaJoin on $this->nombre.id_actividad = $tablaJoin.id_actividad 
+        WHERE `$this->id`= $id_registro";
+        $datos = mysqli_query($con, $cadena);
+        $con->close();
+        return $datos;
+    }
+    public function DevolverTodoJoinTablas($tablaJoin) 
+    {
+        $con = new ClaseBaseDatos();
+        $con = $con->Conectar();
+        $cadena = "SELECT * FROM `$this->nombre`
+        inner join $tablaJoin on $this->nombre.id_actividad = $tablaJoin.id_actividad";
+        $datos = mysqli_query($con, $cadena);
+        $con->close();
+        return $datos;
+    }
+
+
 }

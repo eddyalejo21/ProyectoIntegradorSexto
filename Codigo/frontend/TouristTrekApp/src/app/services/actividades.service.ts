@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { IActividad } from '../interfaces/actividades';
+import { IActividad, IImagenActividad } from '../interfaces/actividades';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -46,5 +46,15 @@ export class ActividadesService {
     const formData = new FormData();
     formData.append('id_actividad', id_actividad.toString());
     return this.http.post<number>(this.apiurl + 'eliminar', formData);
+  }
+  imagenes(id_actividad: number): Observable<IActividad[]> {
+    const formData = new FormData();
+    formData.append('id_actividad', id_actividad.toString());
+    return this.http.post<IActividad[]>(this.apiurl + 'imagenes', formData);
+  }
+  
+  todasimagenes(): Observable<IImagenActividad[]> {
+    const formData = new FormData();
+    return this.http.get<IImagenActividad[]>(this.apiurl + 'todoimagenes');
   }
 }

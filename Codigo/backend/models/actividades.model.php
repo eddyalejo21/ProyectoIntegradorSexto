@@ -89,4 +89,18 @@ class Actividades
         $con->close();
         return $datos;
     }
+    
+    public function imagenesActividad($id_actividad) 
+    {
+        
+        $datos = $this->tabla->DevolverJoinTablas($id_actividad,'imagenes_actividad');
+        return $datos;
+    }
+
+    public function imagenesTodaActividad() 
+    {
+        
+        $datos = $this->tabla->DevolverTodoJoinTablas('imagenes_actividad');
+        return $datos;
+    }
 }

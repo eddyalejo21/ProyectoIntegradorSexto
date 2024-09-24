@@ -1,5 +1,5 @@
 // angular import
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // project import
@@ -28,6 +28,7 @@ import {
   ArrowRightOutline,
   GithubOutline
 } from '@ant-design/icons-angular/icons';
+import { EmpleadosService } from 'src/app/services/empleados.service';
 
 @Component({
   selector: 'app-nav-right',
@@ -37,6 +38,9 @@ import {
   styleUrls: ['./nav-right.component.scss']
 })
 export class NavRightComponent {
+
+  private empleadoServicio= inject(EmpleadosService);
+
   @Input() styleSelectorToggle!: boolean;
   @Output() Customize = new EventEmitter();
   windowWidth: number;
@@ -108,4 +112,12 @@ export class NavRightComponent {
       title: 'History'
     }
   ];
+
+  salir() {
+    this.empleadoServicio.logout();
+  }
+
+  prueba(){
+    
+  }
 }

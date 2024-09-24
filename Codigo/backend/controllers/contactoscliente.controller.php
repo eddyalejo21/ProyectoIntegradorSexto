@@ -14,14 +14,23 @@ require_once('../models/contactoscliente.model.php');
 $contactoscliente = new ContactosCliente;
 
 switch ($_GET["op"]) {
-    
+
 
     case 'todos':
         $datos = array();
 
         $datos = $contactoscliente->todos();
-        while ($row = mysqli_fetch_assoc($datos))
-        {
+        while ($row = mysqli_fetch_assoc($datos)) {
+            $todos[] = $row;
+        }
+        echo json_encode($todos);
+        break;
+
+    case 'todosCliente':
+        $id_cliente = intval($_POST["id_cliente"]);
+        $datos = array();
+        $datos = $contactoscliente->todosCliente($id_cliente);
+        while ($row = mysqli_fetch_assoc($datos)) {
             $todos[] = $row;
         }
         echo json_encode($todos);

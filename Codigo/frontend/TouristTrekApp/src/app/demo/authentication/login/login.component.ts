@@ -1,28 +1,36 @@
 // angular import
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { IEmpleado } from 'src/app/interfaces/empleados';
+import { EmpleadosService } from 'src/app/services/empleados.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export default class LoginComponent {
-  // public method
-  SignInOptions = [
-    {
-      image: 'assets/images/authentication/google.svg',
-      name: 'Google'
-    },
-    {
-      image: 'assets/images/authentication/twitter.svg',
-      name: 'Twitter'
-    },
-    {
-      image: 'assets/images/authentication/facebook.svg',
-      name: 'Facebook'
+
+  private empleadoService = inject(EmpleadosService);
+  
+  form_InicioSesion = new FormGroup({
+    cedula: new FormControl('', Validators.required),
+    clave: new FormControl('', Validators.required)
+  });
+
+  constructor() { }
+
+  iniciarSesion() { 
+    let empleado: IEmpleado = {
+      cedula: this.form_InicioSesion.value.cedula,
+      clave: this.form_InicioSesion.value.clave
     }
-  ];
+
+    this.empleadoService.login(empleado);
+  }
+
+
 }

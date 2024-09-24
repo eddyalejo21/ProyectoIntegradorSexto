@@ -2,17 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IActividadComercio } from '../interfaces/actividades-comercio';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActividadComercioService {
 
-  //apiurl = 'http://localhost/proyectointegradorsexto/Codigo/back/controllers/actividadecomercio.controller.php?op=';
+  apiurl = 'http://localhost/proyectointegradorsexto/Codigo/backend/controllers/actividadecomercio.controller.php?op=';
 
-  apiurl = environment.baseURL + environment.apiURL + 'actividadecomercio.controller.php?op=';
-  
   private http = inject(HttpClient);
 
   constructor() { }

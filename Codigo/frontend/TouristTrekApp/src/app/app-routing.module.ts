@@ -14,7 +14,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/dashboard/default',
+        redirectTo: '/principal',
         pathMatch: 'full'
       },
       {
@@ -186,6 +186,10 @@ const routes: Routes = [
         path: 'editar-empleado/:id',
         loadComponent: () => import('./pages/empleados/nuevo-empleado/nuevo-empleado.component').then((m) => m.NuevoEmpleadoComponent),
         canActivate: [usuariosGuardGuard]
+      },
+      {
+        path: 'principal',
+        loadComponent: () => import('./demo/default/principal/principal.component').then((c) => c.PrincipalComponent)
       }
     ]
   },

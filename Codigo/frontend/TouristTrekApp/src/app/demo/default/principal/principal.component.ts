@@ -17,7 +17,8 @@ export class PrincipalComponent {
 
   listaActividades: IActividad[] = [];
 
-  pathImagenes = 'https://localhost/PiEddy/ProyectoIntegradorSexto/Codigo/backend/public/img/pailon.jpg';
+  pathImagenes = 'https://localhost/PiEddy/ProyectoIntegradorSexto/Codigo/backend/public/img/';
+  extension = '.jpg';
   constructor() { }
 
   ngOnInit(): void {

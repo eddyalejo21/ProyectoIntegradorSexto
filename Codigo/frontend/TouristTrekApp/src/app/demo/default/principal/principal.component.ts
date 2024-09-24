@@ -17,7 +17,7 @@ export class PrincipalComponent {
 
   listaActividades: IActividad[] = [];
 
-  pathImagenes = 'https://localhost/PiEddy/ProyectoIntegradorSexto/Codigo/backend/public/img/';
+  pathImagenes = 'https://raw.githubusercontent.com/Edisonsll44/img-proyecto-integrador/refs/heads/main/';
   extension = '.jpg';
   constructor() { }
 

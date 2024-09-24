@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card cardTitle="{{tituloPantalla}}" blockClass="pc-component">
+            <form [formGroup]="form_Porcentaje" (ngSubmit)="guardar()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="descripcion">Descripción</label>
+                            <input formControlName="descripcion" type="text" class="form-control" id="descripcion" />
+                            <div
+                                *ngIf="form_Porcentaje.get('descripcion').invalid && form_Porcentaje.get('descripcion').touched">
+                                <small *ngIf="form_Porcentaje.get('descripcion').hasError('required')"
+                                    style="color: red">Descripción es requerido</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="valor">Valor</label>
+                            <input formControlName="valor" type="text" class="form-control" id="valor" />
+                            <div *ngIf="form_Porcentaje.get('valor').invalid && form_Porcentaje.get('valor').touched">
+                                <small *ngIf="form_Porcentaje.get('valor').hasError('required')"
+                                    style="color: red">Valor es requerido</small>
+                                <small *ngIf="form_Porcentaje.get('valor').hasError('maxlength')"
+                                    style="color: red">Máximo dos dígitos</small> <span style="margin-right: 5px;"></span>
+                                <small *ngIf="form_Porcentaje.get('valor').hasError('pattern')"
+                                    style="color: red">Únicamente se permiten números</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="estado">Estado</label>
+                            <select class="form-control" (change)="valorEstado($event)" formControlName="estado">
+                                <option>Seleccione una opcion</option>
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>
+                            <div *ngIf="form_Porcentaje.get('estado').invalid && form_Porcentaje.get('estado').touched">
+                                <small *ngIf="form_Porcentaje.get('estado').hasError('required')"
+                                    style="color: red">Dirección es requerida</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4 offset-md-4">
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-primary"
+                                [disabled]="form_Porcentaje.invalid">{{nombreBoton}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </app-card>
+    </div>
+</div>

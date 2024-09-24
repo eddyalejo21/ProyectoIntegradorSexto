@@ -38,6 +38,8 @@ export class NuevoClienteComponent {
   listaPaises: IPais[] = [];
   listaTiposCliente: ITipoCliente[] = [];
   listaMediosContacto: IMedioContacto[] = [];
+  checkboxSeleccionado: boolean = false;
+  // listaMediosContactoSeleccion: any = [];
 
   form_Cliente = new FormGroup({
     identificacion: new FormControl('', Validators.required),
@@ -82,10 +84,39 @@ export class NuevoClienteComponent {
         this.form_Cliente.controls['id_pais'].setValue(data.id_pais.toString());
       });
 
+      // this.medioContactoService.mediosSeleccion(this.idCliente).subscribe(data => {
+      //   data.forEach(element => {
+      //     console.log(element.id_mediocontacto);
+      //     if (element.id_mediocontacto != null) {
+      //       console.log('Existe numero');
+      //       this.checkboxSeleccionado = true;
+      //     }
+      //   });               
+      // });
+
+      this.medioContactoService.mediosSeleccion(this.idCliente).subscribe(data => {
+        const listaObjetos: string[] = [];
+        this.listaMediosContacto.forEach(elemento => {
+          listaObjetos.push(elemento.id_mediocontacto.toString());
+        });
+        console.log(listaObjetos);
+
+        data.forEach(objeto =>{
+          if(listaObjetos.includes(objeto.id_mediocontacto.toString())){
+            console.log('Existe numero');
+            console.log(document.getElementById('checkbox' + objeto.id_mediocontacto) as HTMLInputElement); 
+          }
+        });
+
+
+
+      });
+
       this.tituloPantalla = 'Modificar Medio de Contacto';
       this.nombreBoton = 'Modificar';
     }
   }
+
 
   cargarPaises() {
     this.paisService.todos().subscribe(data => {
@@ -106,7 +137,6 @@ export class NuevoClienteComponent {
   }
 
   guardar() {
-
     const randomToken = Math.floor(100000 + Math.random() * 900000); // Generación de un token de 6 digitos aleatorio
 
     let cliente: ICliente = {

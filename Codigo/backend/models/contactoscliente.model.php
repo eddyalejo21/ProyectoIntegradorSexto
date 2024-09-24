@@ -43,6 +43,23 @@ class ContactosCliente
        return $this->tabla->EliminarRegistro($id_contactoscliente);   
     }
 
+    public function todosCliente($id_cliente)
+    {
+        $con = new ClaseBaseDatos();
+        $con = $con->Conectar();
+        $cadena = "SELECT * FROM `contactos_cliente` WHERE `id_cliente`= $id_cliente";
+        // $cadena = "SELECT pe.id_proyectos_empleados, e.nombres, e.apellidos, e.rol, p.nombre_proyecto
+        //             FROM proyectos_empleados pe
+        //             INNER JOIN empleados e
+        //             ON pe.id_empleado = e.id_empleado
+        //             INNER JOIN proyectos p
+        //             ON pe.id_proyecto = p.id_proyecto
+        //             WHERE pe.id_proyecto = $id_proyecto";
+        $datos = mysqli_query($con, $cadena);
+        $con->close();
+        return $datos;
+    }
+
     /*public function todosJoin()
     {
         $con = new ClaseBaseDatos();

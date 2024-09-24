@@ -125,6 +125,30 @@ export const NavigationItems: NavigationItem[] = [
         classes: 'nav-item',
         url: '/medio-contacto',
         icon: 'bg-colors'
+      },
+      {
+        id: 'porcentaje',
+        title: 'Porcentaje Ganancia',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/porcentaje',
+        icon: 'bg-colors'
+      },
+      {
+        id: 'empleados',
+        title: 'Empleados',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/empleados',
+        icon: 'bg-colors'
+      },
+      {
+        id: 'roles',
+        title: 'Roles',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/roles',
+        icon: 'bg-colors'
       }
       
     ]

@@ -42,4 +42,10 @@ export class MedioContactoService {
     formData.append('id_mediocontacto', id_mediocontacto.toString());
     return this.http.post<number>(this.apiurl + 'eliminar', formData);
   }
+
+  mediosSeleccion(id_cliente : number): Observable<IMedioContacto[]> {
+    const formData = new FormData();
+    formData.append('id_cliente', id_cliente.toString());
+    return this.http.post<IMedioContacto[]>(this.apiurl + 'mediosSeleccion', formData);
+  }
 }

@@ -50,6 +50,9 @@ importers:
       apexcharts:
         specifier: ^3.49.2
         version: 3.53.0
+      bcryptjs:
+        specifier: ^2.4.3
+        version: 2.4.3
       bootstrap:
         specifier: ^5.3.3
         version: 5.3.3(@popperjs/core@2.11.8)
@@ -2232,6 +2235,9 @@ packages:
 
   batch@0.6.1:
     resolution: {integrity: sha512-x+VAiMRL6UPkx+kudNvxTl6hB2XNNCG2r+7wixVfIYwu/2HKRXimwQyaumLjMveWvT2Hkd/cAJw+QBMfJ/EKVw==}
+
+  bcryptjs@2.4.3:
+    resolution: {integrity: sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==}
 
   big.js@5.2.2:
     resolution: {integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==}
@@ -7324,6 +7330,8 @@ snapshots:
   base64id@2.0.0: {}
 
   batch@0.6.1: {}
+
+  bcryptjs@2.4.3: {}
 
   big.js@5.2.2: {}
 

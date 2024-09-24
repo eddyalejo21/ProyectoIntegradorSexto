@@ -136,8 +136,8 @@
                     <div class="col-md-12">
                         @for (medioContacto of listaMediosContacto; track $index) {
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input border-primary" style="font-size: 15px;" type="checkbox" value="{{ medioContacto.id_mediocontacto}}">
-                            <label class="form-check-label" for="opcion1">
+                            <input class="form-check-input border-primary" id="checkbox" style="font-size: 15px;" type="checkbox" value="{{ medioContacto.id_mediocontacto}}">
+                            <label class="form-check-label" for="checkbox">
                                 {{ medioContacto.nombre }}
                             </label>
                         </div>

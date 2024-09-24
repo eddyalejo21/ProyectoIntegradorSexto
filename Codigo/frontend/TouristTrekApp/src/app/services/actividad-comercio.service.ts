@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ActividadComercioService {
 
-  apiurl = 'http://localhost/proyectointegradorsexto/Codigo/back/controllers/actividadecomercio.controller.php?op=';
+  apiurl = 'http://localhost/proyectointegradorsexto/Codigo/backend/controllers/actividadecomercio.controller.php?op=';
 
   private http = inject(HttpClient);
 
